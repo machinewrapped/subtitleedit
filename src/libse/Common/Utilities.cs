@@ -461,6 +461,8 @@ namespace Nikse.SubtitleEdit.Core.Common
             return AutoBreakLineMoreThanTwoLines(text, Configuration.Settings.General.SubtitleLineMaximumLength, Configuration.Settings.General.MergeLinesShorterThan, language);
         }
 
+        private const string _breakOnCharacters = ",.?!)]♪؟";
+
         public static string AutoBreakLinePrivate(string input, int maximumLength, int mergeLinesShorterThan, string language, bool autoBreakLineEndingEarly)
         {
             if (string.IsNullOrEmpty(input) || input.Length < 3)
@@ -486,7 +488,7 @@ namespace Nikse.SubtitleEdit.Core.Common
                     var arr0 = sanitizedLines[0].Trim().TrimEnd('"', '\'').TrimEnd();
                     if (language == "ar")
                     {
-                        if (arr0.EndsWith('-') && sanitizedLines[1].TrimStart().EndsWith('-') && arr0.Length > 1 && (".?!)]♪؟".Contains(arr0[0]) || arr0.StartsWith("--", StringComparison.Ordinal) || arr0.StartsWith('–')))
+                        if (arr0.EndsWith('-') && sanitizedLines[1].TrimStart().EndsWith('-') && arr0.Length > 1 && (_breakOnCharacters.Contains(arr0[0]) || arr0.StartsWith("--", StringComparison.Ordinal) || arr0.StartsWith('–')))
                         {
                             if (Configuration.Settings.Tools.AutoBreakDashEarly)
                             {
@@ -496,7 +498,7 @@ namespace Nikse.SubtitleEdit.Core.Common
                     }
                     else
                     {
-                        if (arr0.StartsWith('-') && sanitizedLines[1].TrimStart().StartsWith('-') && arr0.Length > 1 && (".?!)]♪؟".Contains(arr0[arr0.Length - 1]) || arr0.EndsWith("--", StringComparison.Ordinal) || arr0.EndsWith('–') || arr0 == "- _" || arr0 == "-_"))
+                        if (arr0.StartsWith('-') && sanitizedLines[1].TrimStart().StartsWith('-') && arr0.Length > 1 && (_breakOnCharacters.Contains(arr0[arr0.Length - 1]) || arr0.EndsWith("--", StringComparison.Ordinal) || arr0.EndsWith('–') || arr0 == "- _" || arr0 == "-_"))
                         {
                             if (Configuration.Settings.Tools.AutoBreakDashEarly)
                             {
@@ -508,11 +510,11 @@ namespace Nikse.SubtitleEdit.Core.Common
                     {
                         return input;
                     }
-                    if (sanitizedLines[0].StartsWith('[') && sanitizedLines[0].Length > 1 && (".?!)]♪؟".Contains(arr0[arr0.Length - 1]) && (sanitizedLines[1].StartsWith('-') || sanitizedLines[1].StartsWith('['))))
+                    if (sanitizedLines[0].StartsWith('[') && sanitizedLines[0].Length > 1 && _breakOnCharacters.Contains(arr0[arr0.Length - 1]) && (sanitizedLines[1].StartsWith('-') || sanitizedLines[1].StartsWith('[')))
                     {
                         return input;
                     }
-                    if (sanitizedLines[0].StartsWith('-') && sanitizedLines[0].Length > 1 && (".?!)]♪؟".Contains(arr0[arr0.Length - 1]) && (sanitizedLines[1].StartsWith('-') || sanitizedLines[1].StartsWith('['))))
+                    if (sanitizedLines[0].StartsWith('-') && sanitizedLines[0].Length > 1 && _breakOnCharacters.Contains(arr0[arr0.Length - 1]) && (sanitizedLines[1].StartsWith('-') || sanitizedLines[1].StartsWith('[')))
                     {
                         if (Configuration.Settings.Tools.AutoBreakDashEarly)
                         {
@@ -532,7 +534,7 @@ namespace Nikse.SubtitleEdit.Core.Common
             var s = RemoveLineBreaks(text);
             while (s.Contains("  "))
             {
-                s = s.Replace("  ", " ");
+                s = s.Replace("  ", "\n");
             }
 
             if (s.CountCharacters(false) < mergeLinesShorterThan)

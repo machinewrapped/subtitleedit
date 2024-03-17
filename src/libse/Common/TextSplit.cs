@@ -10,12 +10,14 @@ namespace Nikse.SubtitleEdit.Core.Common
         private readonly List<TextSplitResult> _splits;
         private readonly List<TextSplitResult> _allSplits;
         private readonly int _singleLineMaxLength;
-        private const string EndLineChars = ".!?…؟。？！";
+        private readonly int _singleLineMinLength;
+        private const string EndLineChars = ".!?…؟。？！\n";
         private const string Commas = ",،，、";
 
         public TextSplit(string text, int singleLineMaxLength, string language)
         {
             _singleLineMaxLength = singleLineMaxLength;
+            _singleLineMinLength = singleLineMaxLength / 2;
 
             // create list with all split possibilities
             _splits = new List<TextSplitResult>();
@@ -68,6 +70,22 @@ namespace Nikse.SubtitleEdit.Core.Common
                     return s;
                 }
             }
+            if (breakEarlyLineEnding)
+            {
+                var s = GetAdequateEnding(EndLineChars);
+                if (s != null)
+                {
+                    return s;
+                }
+            }
+            if (breakEarlyComma)
+            {
+                var s = GetAdequateEnding(Commas);
+                if (s != null)
+                {
+                    return s;
+                }
+            }
             if (usePixelWidth)
             {
                 var s = GetBestPixelSplit();
@@ -94,6 +112,12 @@ namespace Nikse.SubtitleEdit.Core.Common
             return best != null ? string.Join(Environment.NewLine, best.Lines) : null;
         }
 
+        private string GetAdequateEnding(string chars)
+        {
+            var orderedArray = _splits.Where(p => p.IsLinelengthSufficient(_singleLineMinLength) && EndsWith(p, chars)).OrderBy(p => p.DiffFromAveragePixel());
+            var best = orderedArray.FirstOrDefault();
+            return best != null ? string.Join(Environment.NewLine, best.Lines) : null;
+        }
         private string GetBestPixelSplit()
         {
             var orderedArray = _splits.Where(p => p.IsLineLengthOkay(_singleLineMaxLength)).OrderBy(p => p.DiffFromAveragePixel());

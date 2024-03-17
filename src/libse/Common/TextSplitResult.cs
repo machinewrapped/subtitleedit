@@ -81,6 +81,11 @@ namespace Nikse.SubtitleEdit.Core.Common
             return Lines[0].Length <= singleLineMaxLength && Lines[1].Length <= singleLineMaxLength;
         }
 
+        public bool IsLinelengthSufficient(int singleLineMinLength)
+        {
+            return Lines[0].Length >= singleLineMinLength && Lines[1].Length >= singleLineMinLength;
+        }
+
         public double DiffFromAverage()
         {
             var avg = TotalLength / Lines.Count;
