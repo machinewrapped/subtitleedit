@@ -2,7 +2,7 @@
 <Language Name="euskara">
   <General>
     <Title>Subtitle Edit</Title>
-    <Version>4.0.3</Version>
+    <Version>4.0.6</Version>
     <TranslatedBy>Itzultzailea: Xabier Aramendi</TranslatedBy>
     <CultureName>eu-ES</CultureName>
     <HelpFile>https://www.nikse.dk/SubtitleEdit/HelpEU</HelpFile>
@@ -639,7 +639,7 @@ Oharra: Egiaztatu diskako toki askea.</WaveFileMalformed>
     <RemovedEmptyLineAtTop>Kenduta goiko lerro hutsa</RemovedEmptyLineAtTop>
     <RemovedEmptyLineAtBottom>Kenduta beheko lerro hutsa</RemovedEmptyLineAtBottom>
     <RemovedEmptyLineInMiddle>Kendu erdiko lerro hutsa</RemovedEmptyLineInMiddle>
-    <RemovedEmptyLinesUnsedLineBreaks>Kendu lerro hutsak/ez erabilitako lerro hautsiak</RemovedEmptyLinesUnsedLineBreaks>
+    <RemovedEmptyLinesUnusedLineBreaks>Kendu lerro hutsak/ez erabilitako lerro hautsiak</RemovedEmptyLinesUnusedLineBreaks>
     <FixOverlappingDisplayTimes>Zuzendu erakus denbora gainjartzea</FixOverlappingDisplayTimes>
     <FixShortDisplayTimes>Zuzendu erakus denbora laburrak</FixShortDisplayTimes>
     <FixLongDisplayTimes>Zuzendu erakus denbora luzeak</FixLongDisplayTimes>
@@ -2827,7 +2827,7 @@ Gorde aldaketak?</KeepChangesMessage>
     <RemoveShotChange>Kendu agerraldi aldaketa</RemoveShotChange>
     <GuessTimeCodes>Ustezko denbora kodeak...</GuessTimeCodes>
     <SeekSilence>Bilatu isiltasuna</SeekSilence>
-    <InsertSubtitleHere>Txertatu azpidatzia hemen...</InsertSubtitleHere>
+    <InsertSubtitleHere>Txertatu azpidatzia hemen</InsertSubtitleHere>
     <CharsSecX>HKSG-ko: {0:0.00}</CharsSecX>
     <WordsMinX>HZMN-ko: {0:0.00}</WordsMinX>
   </Waveform>

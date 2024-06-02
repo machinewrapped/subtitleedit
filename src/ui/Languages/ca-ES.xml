@@ -2,7 +2,7 @@
 <Language Name="català">
   <General>
     <Title>Subtitle Edit</Title>
-    <Version>4.0.3</Version>
+    <Version>4.0.6</Version>
     <TranslatedBy>Traduït per Juansa</TranslatedBy>
     <CultureName>ca-ES</CultureName>
     <HelpFile />
@@ -585,7 +585,7 @@ Email: mailto:nikse.dk@gmail.com</AboutText1>
     <RemovedEmptyLineAtTop>Suprimeix línia buida inicial</RemovedEmptyLineAtTop>
     <RemovedEmptyLineAtBottom>Suprimeix línia buida final</RemovedEmptyLineAtBottom>
     <RemovedEmptyLineInMiddle>Suprimeix línia buida d'enmig</RemovedEmptyLineInMiddle>
-    <RemovedEmptyLinesUnsedLineBreaks>Suprimeix salt de línia línies buides/sense ús</RemovedEmptyLinesUnsedLineBreaks>
+    <RemovedEmptyLinesUnusedLineBreaks>Suprimeix salt de línia línies buides/sense ús</RemovedEmptyLinesUnusedLineBreaks>
     <EmptyLinesRemovedX>Línies buides suprimides: {0}</EmptyLinesRemovedX>
     <FixOverlappingDisplayTimes>Arregla temps solapats</FixOverlappingDisplayTimes>
     <FixShortDisplayTimes>Arregla temps curts</FixShortDisplayTimes>
@@ -2715,7 +2715,7 @@ Email: mailto:nikse.dk@gmail.com</AboutText1>
     <RemoveShotChange>Suprimeix canvi d'escena</RemoveShotChange>
     <GuessTimeCodes>Endevina codis de temps</GuessTimeCodes>
     <SeekSilence>Cerca silenci...</SeekSilence>
-    <InsertSubtitleHere>Insereix subtítol ací...</InsertSubtitleHere>
+    <InsertSubtitleHere>Insereix subtítol ací</InsertSubtitleHere>
     <CharsSecX>CPS: {0:0.00}</CharsSecX>
     <WordsMinX>WPM: {0:0.00}</WordsMinX>
   </Waveform>

@@ -392,7 +392,7 @@ namespace Nikse.SubtitleEdit.Forms
 
             _fixActions = new List<FixItem>
             {
-                new FixItem(_language.RemovedEmptyLinesUnsedLineBreaks, "Has only one valid line!</br><i> -> Has only one valid line!", () => new FixEmptyLines().Fix(Subtitle, this), ce.EmptyLinesTicked),
+                new FixItem(_language.RemovedEmptyLinesUnusedLineBreaks, "Has only one valid line!</br><i> -> Has only one valid line!", () => new FixEmptyLines().Fix(Subtitle, this), ce.EmptyLinesTicked),
                 new FixItem(_language.FixOverlappingDisplayTimes, string.Empty, () => new FixOverlappingDisplayTimes().Fix(Subtitle, this), ce.OverlappingDisplayTimeTicked),
                 new FixItem(_language.FixShortDisplayTimes, string.Empty, () => new FixShortDisplayTimes().Fix(Subtitle, this), ce.TooShortDisplayTimeTicked),
                 new FixItem(_language.FixLongDisplayTimes, string.Empty, () => new FixLongDisplayTimes().Fix(Subtitle, this), ce.TooLongDisplayTimeTicked),
@@ -559,7 +559,7 @@ namespace Nikse.SubtitleEdit.Forms
             FixEmptyLines.Language.RemovedEmptyLineAtBottom = LanguageSettings.Current.FixCommonErrors.RemovedEmptyLineAtBottom;
             FixEmptyLines.Language.RemovedEmptyLineAtTop = LanguageSettings.Current.FixCommonErrors.RemovedEmptyLineAtTop;
             FixEmptyLines.Language.RemovedEmptyLineInMiddle = LanguageSettings.Current.FixCommonErrors.RemovedEmptyLineInMiddle;
-            FixEmptyLines.Language.RemovedEmptyLinesUnsedLineBreaks = LanguageSettings.Current.FixCommonErrors.RemovedEmptyLinesUnsedLineBreaks;
+            FixEmptyLines.Language.RemovedEmptyLinesUnusedLineBreaks = LanguageSettings.Current.FixCommonErrors.RemovedEmptyLinesUnusedLineBreaks;
             FixHyphensInDialog.Language.FixHyphensInDialogs = LanguageSettings.Current.FixCommonErrors.FixHyphensInDialogs;
             FixHyphensRemoveDashSingleLine.Language.RemoveHyphensSingleLine = LanguageSettings.Current.FixCommonErrors.RemoveHyphensSingleLine;
             FixInvalidItalicTags.Language.FixInvalidItalicTag = LanguageSettings.Current.FixCommonErrors.FixInvalidItalicTag;
@@ -756,20 +756,22 @@ namespace Nikse.SubtitleEdit.Forms
 
             var fixAction = _language.FixCommonOcrErrors;
             var noOfFixes = 0;
-            var lastLine = string.Empty;
+            var previousLine = string.Empty;
             for (var i = 0; i < Subtitle.Paragraphs.Count; i++)
             {
                 var p = Subtitle.Paragraphs[i];
 
-                var lastLastP = Subtitle.GetParagraphOrDefault(i - 2);
-                string lastLastLine = null;
-                if (lastLastP != null && !string.IsNullOrEmpty(lastLastP.Text))
+                var prePrevParagraph = Subtitle.GetParagraphOrDefault(i - 2);
+                string prePreviousLine = null;
+                if (prePrevParagraph != null && !string.IsNullOrEmpty(prePrevParagraph.Text))
                 {
-                    lastLastLine = lastLastP.Text;
+                    prePreviousLine = prePrevParagraph.Text;
                 }
 
-                var text = _ocrFixEngine.FixOcrErrors(p.Text, Subtitle, i, lastLine, lastLastLine, false, OcrFixEngine.AutoGuessLevel.Cautious);
-                lastLine = text;
+                var text = _ocrFixEngine.FixOcrErrors(p.Text, Subtitle, i, previousLine, prePreviousLine, false, 
+                    OcrFixEngine.AutoGuessLevel.Cautious);
+                
+                previousLine = text;
                 if (AllowFix(p, fixAction) && p.Text != text)
                 {
                     var oldText = p.Text;
@@ -1143,21 +1145,9 @@ namespace Nikse.SubtitleEdit.Forms
             listViewFixes.Sort();
         }
 
-        private void ButtonSelectAllClick(object sender, EventArgs e)
-        {
-            foreach (ListViewItem item in listView1.Items)
-            {
-                item.Checked = true;
-            }
-        }
+        private void ButtonSelectAllClick(object sender, EventArgs e) => listView1.CheckAll();
 
-        private void ButtonInverseSelectionClick(object sender, EventArgs e)
-        {
-            foreach (ListViewItem item in listView1.Items)
-            {
-                item.Checked = !item.Checked;
-            }
-        }
+        private void ButtonInverseSelectionClick(object sender, EventArgs e) => listView1.InvertCheck();
 
         private void ListViewFixesSelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1368,18 +1358,12 @@ namespace Nikse.SubtitleEdit.Forms
 
         private void ButtonFixesSelectAllClick(object sender, EventArgs e)
         {
-            foreach (ListViewItem item in listViewFixes.Items)
-            {
-                item.Checked = true;
-            }
+            listViewFixes.CheckAll();
         }
 
         private void ButtonFixesInverseClick(object sender, EventArgs e)
         {
-            foreach (ListViewItem item in listViewFixes.Items)
-            {
-                item.Checked = !item.Checked;
-            }
+            listViewFixes.InvertCheck();
         }
 
         private void ButtonFixesApplyClick(object sender, EventArgs e)
@@ -1946,18 +1930,12 @@ namespace Nikse.SubtitleEdit.Forms
 
         private void toolStripMenuItemSelectAll_Click(object sender, EventArgs e)
         {
-            foreach (ListViewItem item in listViewFixes.Items)
-            {
-                item.Checked = true;
-            }
+            listViewFixes.CheckAll();
         }
 
         private void toolStripMenuItemInverseSelection_Click(object sender, EventArgs e)
         {
-            foreach (ListViewItem item in listViewFixes.Items)
-            {
-                item.Checked = !item.Checked;
-            }
+            listViewFixes.InvertCheck();
         }
 
         private void setCurrentFixesAsDefaultToolStripMenuItem_Click(object sender, EventArgs e)

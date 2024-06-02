@@ -86,12 +86,13 @@
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.WebRequest" />
-    <Reference Include="System.Security.AccessControl, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\System.Security.AccessControl.6.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    <Reference Include="System.Security.AccessControl, Version=6.0.0.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Security.AccessControl.6.0.1\lib\net461\System.Security.AccessControl.dll</HintPath>
     </Reference>
     <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
     </Reference>
+    <Reference Include="System.Speech" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -101,9 +102,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\Adapters\NativeTextBoxAdapter.cs" />
     <Compile Include="Controls\CuesPreviewView.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\Interfaces\ISelectedText.cs" />
     <Compile Include="Controls\NikseComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -382,6 +385,18 @@
     <Compile Include="Forms\AudioToText\VoskModelDownload.Designer.cs">
       <DependentUpon>VoskModelDownload.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\GenerateVideoWithHardSubsOutFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GenerateVideoWithHardSubsOutFile.Designer.cs">
+      <DependentUpon>GenerateVideoWithHardSubsOutFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GenerateVideoWithSoftSubsLanguage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GenerateVideoWithSoftSubsLanguage.Designer.cs">
+      <DependentUpon>GenerateVideoWithSoftSubsLanguage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ConvertColorsToDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -417,6 +432,12 @@
     </Compile>
     <Compile Include="Forms\GenerateVideoWithSoftSubs.Designer.cs">
       <DependentUpon>GenerateVideoWithSoftSubs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GenerateVideoWithSoftSubsOutFileName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GenerateVideoWithSoftSubsOutFileName.Designer.cs">
+      <DependentUpon>GenerateVideoWithSoftSubsOutFileName.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\InterjectionsEditSkipList.cs">
       <SubType>Form</SubType>
@@ -665,6 +686,30 @@
     <Compile Include="Forms\SeJobs\SeJobExport.Designer.cs">
       <DependentUpon>SeJobExport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Translate\AutoTranslateSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Translate\AutoTranslateSettings.Designer.cs">
+      <DependentUpon>AutoTranslateSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Tts\PiperDownload.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Tts\PiperDownload.Designer.cs">
+      <DependentUpon>PiperDownload.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Tts\RegenerateAudioClip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Tts\RegenerateAudioClip.Designer.cs">
+      <DependentUpon>RegenerateAudioClip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Tts\TextToSpeech.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Tts\TextToSpeech.Designer.cs">
+      <DependentUpon>TextToSpeech.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\TimedTextPropertiesImsc11.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -688,12 +733,6 @@
     </Compile>
     <Compile Include="Forms\Translate\AutoTranslate.Designer.cs">
       <DependentUpon>AutoTranslate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Translate\GenericTranslate.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Translate\GenericTranslate.Designer.cs">
-      <DependentUpon>GenericTranslate.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ImportCdg.cs">
       <SubType>Form</SubType>
@@ -1389,6 +1428,12 @@
     <Compile Include="Forms\TransportStreamSubtitleChooser.Designer.cs">
       <DependentUpon>TransportStreamSubtitleChooser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Tts\ReviewAudioClips.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Tts\ReviewAudioClips.Designer.cs">
+      <DependentUpon>ReviewAudioClips.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\UnknownSubtitle.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1521,10 +1566,10 @@
     <Compile Include="Forms\WaveformUndocked.Designer.cs">
       <DependentUpon>WaveformUndocked.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\GoogleOrMicrosoftTranslate.cs">
+    <Compile Include="Forms\Translate\GoogleOrMicrosoftTranslate.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\GoogleOrMicrosoftTranslate.Designer.cs">
+    <Compile Include="Forms\Translate\GoogleOrMicrosoftTranslate.Designer.cs">
       <DependentUpon>GoogleOrMicrosoftTranslate.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\TextPrompt.cs">
@@ -1795,8 +1840,17 @@
     <EmbeddedResource Include="Forms\GenerateVideoFFmpegPrompt.resx">
       <DependentUpon>GenerateVideoFFmpegPrompt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GenerateVideoWithHardSubsOutFile.resx">
+      <DependentUpon>GenerateVideoWithHardSubsOutFile.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\GenerateVideoWithSoftSubs.resx">
       <DependentUpon>GenerateVideoWithSoftSubs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GenerateVideoWithSoftSubsLanguage.resx">
+      <DependentUpon>GenerateVideoWithSoftSubsLanguage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GenerateVideoWithSoftSubsOutFileName.resx">
+      <DependentUpon>GenerateVideoWithSoftSubsOutFileName.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\GetVideoPosition.resx">
       <DependentUpon>GetVideoPosition.cs</DependentUpon>
@@ -1924,6 +1978,18 @@
     <EmbeddedResource Include="Forms\ShotChanges\AdjustTimingViaShotChanges.resx">
       <DependentUpon>AdjustTimingViaShotChanges.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Translate\AutoTranslateSettings.resx">
+      <DependentUpon>AutoTranslateSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Tts\PiperDownload.resx">
+      <DependentUpon>PiperDownload.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Tts\RegenerateAudioClip.resx">
+      <DependentUpon>RegenerateAudioClip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Tts\TextToSpeech.resx">
+      <DependentUpon>TextToSpeech.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\TimedTextPropertiesImsc11.resx">
       <DependentUpon>TimedTextPropertiesImsc11.cs</DependentUpon>
     </EmbeddedResource>
@@ -1935,10 +2001,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Translate\AutoTranslate.resx">
       <DependentUpon>AutoTranslate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Translate\GenericTranslate.resx">
-      <DependentUpon>GenericTranslate.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ImportCdg.resx">
       <DependentUpon>ImportCdg.cs</DependentUpon>
@@ -2273,6 +2335,9 @@
     <EmbeddedResource Include="Forms\TransportStreamSubtitleChooser.resx">
       <DependentUpon>TransportStreamSubtitleChooser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Tts\ReviewAudioClips.resx">
+      <DependentUpon>ReviewAudioClips.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\UnknownSubtitle.resx">
       <DependentUpon>UnknownSubtitle.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -2338,7 +2403,7 @@
     <EmbeddedResource Include="Forms\WaveformUndocked.resx">
       <DependentUpon>WaveformUndocked.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\GoogleOrMicrosoftTranslate.resx">
+    <EmbeddedResource Include="Forms\Translate\GoogleOrMicrosoftTranslate.resx">
       <DependentUpon>GoogleOrMicrosoftTranslate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TextPrompt.resx">
@@ -2387,7 +2452,11 @@
     <EmbeddedResource Include="Resources\HunspellDictionaries.xml.gz" />
     <EmbeddedResource Include="Resources\HunspellBackupDictionaries.xml.gz" />
     <EmbeddedResource Include="Resources\TesseractDictionaries.xml.gz" />
+    <EmbeddedResource Include="Resources\eleven-labs-voices.zip" />
+    <EmbeddedResource Include="Resources\AzureVoices.zip" />
+    <EmbeddedResource Include="Resources\AllTalkVoices.zip" />
     <None Include="Resources\nOCR_TesseractHelper.xml.gz" />
+    <EmbeddedResource Include="Resources\PiperVoices.zip" />
     <None Include="Resources\SMPTE-428-7-2007-DCST.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -2631,6 +2700,7 @@
     <None Include="Resources\L10.png" />
     <None Include="Resources\L11.png" />
     <None Include="Resources\Layout.png" />
+    <None Include="Resources\OpenVideo.png" />
     <Content Include="Resources\TesseractDictionaries.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -2694,6 +2764,7 @@
       <Visible>false</Visible>
     </HunspellAssemblies>
   </ItemGroup>
+  <ItemGroup />
   <Target Name="BeforeCompile">
     <XmlPeek XmlInputPath="$(ProjectDir)packages.config" Query="//package[@id='NHunspell']/@version">
       <Output TaskParameter="Result" PropertyName="HunspellVersion" />

@@ -14,6 +14,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml;
+using Nikse.SubtitleEdit.Core.VobSub;
 
 namespace Nikse.SubtitleEdit.Core.Common
 {
@@ -30,7 +31,7 @@ namespace Nikse.SubtitleEdit.Core.Common
         private static readonly Regex RegexNumberSpacePeriod = new Regex(@"(\d) (\.)", RegexOptions.Compiled);
 
         public static string[] VideoFileExtensions { get; } = { ".avi", ".mkv", ".wmv", ".mpg", ".mpeg", ".divx", ".mp4", ".asf", ".flv", ".mov", ".m4v", ".vob", ".ogv", ".webm", ".ts", ".tts", ".m2ts", ".mts", ".avs", ".mxf" };
-        public static string[] AudioFileExtensions { get; } = { ".mp3", ".wav", ".wma", ".ogg", ".mpa", ".m4a", ".ape", ".aiff", ".flac", ".aac", ".ac3", ".eac3", ".mka", ".opus", ".adts" };
+        public static string[] AudioFileExtensions { get; } = { ".mp3", ".wav", ".wma", ".ogg", ".mpa", ".m4a", ".ape", ".aiff", ".flac", ".aac", ".ac3", ".eac3", ".mka", ".opus", ".adts", ".m4b" };
 
         public static bool IsInteger(string s)
         {
@@ -2799,6 +2800,30 @@ namespace Nikse.SubtitleEdit.Core.Common
 
             subtitle.Renumber();
             return format;
+        }
+
+        public static void ParseMatroskaTextSt(MatroskaTrackInfo trackInfo, List<MatroskaSubtitle> subtitleLines, Subtitle subtitle)
+        {
+            for (var indexTextSt = 0; indexTextSt < subtitleLines.Count; indexTextSt++)
+            {
+                try
+                {
+                    var matroskaSubtitle = subtitleLines[indexTextSt];
+                    var idx = -6; // MakeMKV starts at DialogPresentationSegment
+                    var data = matroskaSubtitle.GetData(trackInfo);
+                    if (VobSubParser.IsPrivateStream2(data, 0))
+                    {
+                        idx = 0; //  starts with MPEG2 private stream 2 (just to be sure)
+                    }
+
+                    var dps = new TextST.DialogPresentationSegment(data, idx);
+                    subtitle.Paragraphs[indexTextSt].Text = dps.Text;
+                }
+                catch (Exception exception)
+                {
+                    subtitle.Paragraphs[indexTextSt].Text = exception.Message;
+                }
+            }
         }
 
         private static void FixShortDisplayTime(Subtitle s, int i)
