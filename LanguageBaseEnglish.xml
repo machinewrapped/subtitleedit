@@ -2,7 +2,7 @@
 <Language Name="English">
   <General>
     <Title>Subtitle Edit</Title>
-    <Version>4.0.6</Version>
+    <Version>4.0.7</Version>
     <TranslatedBy>Translated by Nikse</TranslatedBy>
     <CultureName>en-US</CultureName>
     <HelpFile />
@@ -1016,6 +1016,7 @@ We leverage the intrinsic rhythm of the image.</CreateSimpleChainingToolTip>
     <Audio>Audio</Audio>
     <Stereo>Stereo</Stereo>
     <Preset>Preset</Preset>
+    <PixelFormat>Pixel format</PixelFormat>
     <Crf>CRF</Crf>
     <TuneFor>Tune for</TuneFor>
     <AlignRight>Align right</AlignRight>
@@ -1449,6 +1450,7 @@ We leverage the intrinsic rhythm of the image.</CreateSimpleChainingToolTip>
         <GenerateBlankVideo>Generate blank video...</GenerateBlankVideo>
         <GenerateVideoWithBurnedInSub>Generate video with burned-in subtitle...</GenerateVideoWithBurnedInSub>
         <GenerateVideoWithEmbeddedSubs>Generate video with added/removed embedded subtitles...</GenerateVideoWithEmbeddedSubs>
+        <GenerateTransparentVideoWithSubs>Generate transparent video with subtitles...</GenerateTransparentVideoWithSubs>
         <VideoAudioToTextX>Audio to text ({0})...</VideoAudioToTextX>
         <ImportChaptersFromVideo>Import chapters from video</ImportChaptersFromVideo>
         <GenerateImportShotChanges>Generate/import shot changes...</GenerateImportShotChanges>
@@ -3018,15 +3020,15 @@ Continue?</RestoreDefaultSettingsMsg>
     <NumberOfAlignmentTags>Number of alignment tags: {0:#,##0}</NumberOfAlignmentTags>
     <LineLengthMinimum>Subtitle length - minimum: {0}</LineLengthMinimum>
     <LineLengthMaximum>Subtitle length - maximum: {0}</LineLengthMaximum>
-    <LineLengthAverage>Subtitle length - average: {0}</LineLengthAverage>
-    <LinesPerSubtitleAverage>Subtitle, number of lines - average: {0:0.0}</LinesPerSubtitleAverage>
+    <LineLengthAverage>Subtitle length - average: {0:#.###}</LineLengthAverage>
+    <LinesPerSubtitleAverage>Subtitle, number of lines - average: {0:0.###}</LinesPerSubtitleAverage>
     <SingleLineLengthMinimum>Single line length - minimum: {0}</SingleLineLengthMinimum>
     <SingleLineLengthMaximum>Single line length - maximum: {0}</SingleLineLengthMaximum>
-    <SingleLineLengthAverage>Single line length - average: {0}</SingleLineLengthAverage>
+    <SingleLineLengthAverage>Single line length - average: {0:#.###}</SingleLineLengthAverage>
     <SingleLineLengthExceedingMaximum>Single line length - exceeding maximum ({0} chars): {1} ({2:0.00}%)</SingleLineLengthExceedingMaximum>
     <SingleLineWidthMinimum>Single line width - minimum: {0} pixels</SingleLineWidthMinimum>
     <SingleLineWidthMaximum>Single line width - maximum: {0} pixels</SingleLineWidthMaximum>
-    <SingleLineWidthAverage>Single line width - average: {0} pixels</SingleLineWidthAverage>
+    <SingleLineWidthAverage>Single line width - average: {0:#.###} pixels</SingleLineWidthAverage>
     <SingleLineWidthExceedingMaximum>Single line width - exceeding maximum ({0} pixels): {1} ({2:0.00}%)</SingleLineWidthExceedingMaximum>
     <DurationMinimum>Duration - minimum: {0:0.000} seconds</DurationMinimum>
     <DurationMaximum>Duration - maximum: {0:0.000} seconds</DurationMaximum>
@@ -3137,6 +3139,9 @@ Continue?</RestoreDefaultSettingsMsg>
     <Angle>Angle</Angle>
     <BoxPerLine>Box per line (use outline color)</BoxPerLine>
     <BoxMultiLine>One box (use shadow color)</BoxMultiLine>
+    <BoxPerLineShort>Box per line</BoxPerLineShort>
+    <BoxMultiLineShort>One box</BoxMultiLineShort>
+    <BoxType>Box type</BoxType>
     <DuplicateStyleNames>Duplicate style names: {0}</DuplicateStyleNames>
   </SubStationAlphaStyles>
   <SubStationAlphaStylesCategoriesManager>
@@ -3175,6 +3180,7 @@ Continue?</RestoreDefaultSettingsMsg>
     <MergingAudioTrackXOfY>Merging audio track: {0} / {1}...</MergingAudioTrackXOfY>
     <GeneratingSpeechFromTextXOfY>Generating speech from text: {0} / {1}...</GeneratingSpeechFromTextXOfY>
     <ReviewAudioClips>Review audio clips</ReviewAudioClips>
+    <CustomAudioEncoding>Custom audio encoding</CustomAudioEncoding>
     <ReviewInfo>Review and edit/remove audio clips</ReviewInfo>
     <Play>Play</Play>
     <AutoContinue>Auto-continue</AutoContinue>
@@ -3450,6 +3456,7 @@ Keep changes?</KeepChangesMessage>
   <WebVttProperties>
     <UseXTimeStamp>Use X-TIMESTAMP-MAP header value</UseXTimeStamp>
     <MergeLines>Merge lines with same text on load</MergeLines>
+    <MergeStyleTags>Merge style tags</MergeStyleTags>
   </WebVttProperties>
   <WebVttStyleManager>
     <Title>WebVTT styles</Title>

@@ -2689,6 +2689,9 @@ namespace Nikse.SubtitleEdit.Logic
                 case "GenerateVideoWithBurnedInSubs/Preset":
                     language.GenerateVideoWithBurnedInSubs.Preset = reader.Value;
                     break;
+                case "GenerateVideoWithBurnedInSubs/PixelFormat":
+                    language.GenerateVideoWithBurnedInSubs.PixelFormat = reader.Value;
+                    break;
                 case "GenerateVideoWithBurnedInSubs/Crf":
                     language.GenerateVideoWithBurnedInSubs.Crf = reader.Value;
                     break;
@@ -4743,6 +4746,9 @@ namespace Nikse.SubtitleEdit.Logic
                     break;
                 case "Main/Menu/Video/GenerateVideoWithEmbeddedSubs":
                     language.Main.Menu.Video.GenerateVideoWithEmbeddedSubs = reader.Value;
+                    break;
+                case "Main/Menu/Video/GenerateTransparentVideoWithSubs":
+                    language.Main.Menu.Video.GenerateTransparentVideoWithSubs = reader.Value;
                     break;
                 case "Main/Menu/Video/VideoAudioToTextX":
                     language.Main.Menu.Video.VideoAudioToTextX = reader.Value;
@@ -8611,6 +8617,15 @@ namespace Nikse.SubtitleEdit.Logic
                 case "SubStationAlphaStyles/BoxMultiLine":
                     language.SubStationAlphaStyles.BoxMultiLine = reader.Value;
                     break;
+                case "SubStationAlphaStyles/BoxPerLineShort":
+                    language.SubStationAlphaStyles.BoxPerLineShort = reader.Value;
+                    break;
+                case "SubStationAlphaStyles/BoxMultiLineShort":
+                    language.SubStationAlphaStyles.BoxMultiLineShort = reader.Value;
+                    break;
+                case "SubStationAlphaStyles/BoxType":
+                    language.SubStationAlphaStyles.BoxType = reader.Value;
+                    break;
                 case "SubStationAlphaStyles/DuplicateStyleNames":
                     language.SubStationAlphaStyles.DuplicateStyleNames = reader.Value;
                     break;
@@ -8706,6 +8721,9 @@ namespace Nikse.SubtitleEdit.Logic
                     break;
                 case "TextToSpeech/ReviewAudioClips":
                     language.TextToSpeech.ReviewAudioClips = reader.Value;
+                    break;
+                case "TextToSpeech/CustomAudioEncoding":
+                    language.TextToSpeech.CustomAudioEncoding = reader.Value;
                     break;
                 case "TextToSpeech/ReviewInfo":
                     language.TextToSpeech.ReviewInfo = reader.Value;
@@ -9423,6 +9441,9 @@ namespace Nikse.SubtitleEdit.Logic
                     break;
                 case "WebVttProperties/MergeLines":
                     language.WebVttProperties.MergeLines = reader.Value;
+                    break;
+                case "WebVttProperties/MergeStyleTags":
+                    language.WebVttProperties.MergeStyleTags = reader.Value;
                     break;
                 case "WebVttStyleManager/Title":
                     language.WebVttStyleManager.Title = reader.Value;

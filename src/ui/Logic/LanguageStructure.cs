@@ -1091,6 +1091,7 @@
             public string Audio { get; set; }
             public string Stereo { get; set; }
             public string Preset { get; set; }
+            public string PixelFormat { get; set; }
             public string Crf { get; set; }
             public string TuneFor { get; set; }
             public string AlignRight { get; set; }
@@ -1845,6 +1846,7 @@
                     public string GenerateBlankVideo { get; set; }
                     public string GenerateVideoWithBurnedInSub { get; set; }
                     public string GenerateVideoWithEmbeddedSubs { get; set; }
+                    public string GenerateTransparentVideoWithSubs { get; set; }
                     public string VideoAudioToTextX { get; set; }
                     public string ImportChaptersFromVideo { get; set; }
                     public string GenerateImportShotChanges { get; set; }
@@ -3340,6 +3342,9 @@
             public string Angle { get; set; }
             public string BoxPerLine { get; set; }
             public string BoxMultiLine { get; set; }
+            public string BoxPerLineShort { get; set; }
+            public string BoxMultiLineShort { get; set; }
+            public string BoxType { get; set; }
             public string DuplicateStyleNames { get; set; }
         }
 
@@ -3384,6 +3389,7 @@
             public string MergingAudioTrackXOfY { get; set; }
             public string GeneratingSpeechFromTextXOfY { get; set; }
             public string ReviewAudioClips { get; set; }
+            public string CustomAudioEncoding { get; set; }
             public string ReviewInfo { get; set; }
             public string Play { get; set; }
             public string AutoContinue { get; set; }
@@ -3691,6 +3697,7 @@
         {
             public string UseXTimeStamp { get; set; }
             public string MergeLines { get; set; }
+            public string MergeStyleTags { get; set; }
         }
 
         public class WebVttStyleManager

@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using Nikse.SubtitleEdit.Core.AutoTranslate;
 using Nikse.SubtitleEdit.Core.Common;
+using Nikse.SubtitleEdit.Core.Settings;
 using Nikse.SubtitleEdit.Logic;
 
 namespace Nikse.SubtitleEdit.Forms.Translate
@@ -70,6 +71,22 @@ namespace Nikse.SubtitleEdit.Forms.Translate
                     nikseTextBoxPrompt.Text = new ToolsSettings().AnthropicPrompt;
                 }
             }
+            else if (_engineType == typeof(GroqTranslate))
+            {
+                nikseTextBoxPrompt.Text = Configuration.Settings.Tools.GroqPrompt;
+                if (string.IsNullOrWhiteSpace(nikseTextBoxPrompt.Text))
+                {
+                    nikseTextBoxPrompt.Text = new ToolsSettings().GroqPrompt;
+                }
+            }
+            else if (_engineType == typeof(OpenRouterTranslate))
+            {
+                nikseTextBoxPrompt.Text = Configuration.Settings.Tools.OpenRouterPrompt;
+                if (string.IsNullOrWhiteSpace(nikseTextBoxPrompt.Text))
+                {
+                    nikseTextBoxPrompt.Text = new ToolsSettings().OpenRouterPrompt;
+                }
+            }
             else
             {
                 labelPrompt.Visible = false;
@@ -89,6 +106,24 @@ namespace Nikse.SubtitleEdit.Forms.Translate
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
+            if (nikseTextBoxPrompt.Text.Replace("{0}", string.Empty).Replace("{1}", string.Empty).Contains('{'))
+            {
+                MessageBox.Show("Character not allowed in prompt: '{' (besides '{0}' and '{1}')");
+                return;
+            }
+
+            if (nikseTextBoxPrompt.Text.Replace("{0}", string.Empty).Replace("{1}", string.Empty).Contains('}'))
+            {
+                MessageBox.Show("Character not allowed in prompt: '}' (besides '{0}' and '{1}')");
+                return;
+            }
+
+            if (nikseTextBoxPrompt.Text.Length > 1000)
+            {
+                MessageBox.Show("Too many characters in prompt");
+                return;
+            }
+
             Configuration.Settings.Tools.AutoTranslateDelaySeconds = (int)nikseUpDownDelay.Value;
             Configuration.Settings.Tools.AutoTranslateMaxBytes = (int)nikseUpDownMaxBytes.Value;
 
@@ -107,6 +142,14 @@ namespace Nikse.SubtitleEdit.Forms.Translate
             else if (_engineType == typeof(AnthropicTranslate))
             {
                 Configuration.Settings.Tools.AnthropicPrompt = nikseTextBoxPrompt.Text;
+            }
+            else if (_engineType == typeof(GroqTranslate))
+            {
+                Configuration.Settings.Tools.GroqPrompt = nikseTextBoxPrompt.Text;
+            }
+            else if (_engineType == typeof(OpenRouterTranslate))
+            {
+                Configuration.Settings.Tools.OpenRouterPrompt = nikseTextBoxPrompt.Text;
             }
 
             if (comboBoxParagraphHandling.SelectedIndex == 1)

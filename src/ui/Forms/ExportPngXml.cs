@@ -22,6 +22,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
 using System.Xml;
+using Nikse.SubtitleEdit.Core.Settings;
 using MessageBox = Nikse.SubtitleEdit.Forms.SeMsgBox.MessageBox;
 
 namespace Nikse.SubtitleEdit.Forms
@@ -474,6 +475,11 @@ namespace Nikse.SubtitleEdit.Forms
         internal MakeBitmapParameter MakeMakeBitmapParameter(int index, int screenWidth, int screenHeight)
         {
             var p = _subtitle.GetParagraphOrDefault(index);
+            if (p == null)
+            {
+                p = new Paragraph();
+            }
+
             var parameter = new MakeBitmapParameter
             {
                 Type = _exportType,
@@ -510,6 +516,7 @@ namespace Nikse.SubtitleEdit.Forms
                 FullFrame = checkBoxFullFrameImage.Checked,
                 FullFrameBackgroundColor = panelFullFrameBackground.BackColor,
             };
+
             if (index < _subtitle.Paragraphs.Count)
             {
                 parameter.P = _subtitle.Paragraphs[index];
@@ -571,6 +578,7 @@ namespace Nikse.SubtitleEdit.Forms
             {
                 parameter.P = null;
             }
+
             return parameter;
         }
 
@@ -5854,7 +5862,7 @@ $DROP=[DROPVALUE]" + Environment.NewLine + Environment.NewLine +
             }
         }
 
-        private void SubtitleListView1InitializeLanguage(LanguageStructure.General general, Core.Common.Settings settings)
+        private void SubtitleListView1InitializeLanguage(LanguageStructure.General general, Settings settings)
         {
             var columnIndexNumber = 0;
             var columnIndexStart = 1;

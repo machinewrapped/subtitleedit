@@ -2,7 +2,7 @@
 <Language Name="中文(简体)">
   <General>
     <Title>Subtitle Edit</Title>
-    <Version>4.0.6</Version>
+    <Version>4.0.7</Version>
     <TranslatedBy>翻译: FeiXJ | Leon Cheung | larsenlouis | VK | nkh0472</TranslatedBy>
     <CultureName>zh-Hans</CultureName>
     <HelpFile>https://www.nikse.dk/SubtitleEdit/Help</HelpFile>
@@ -1013,6 +1013,7 @@ Command line: {1} {2}
     <Audio>音频</Audio>
     <Stereo>立体声</Stereo>
     <Preset>预设</Preset>
+    <PixelFormat>像素格式</PixelFormat>
     <Crf>CRF</Crf>
     <TuneFor>视频类型</TuneFor>
     <AlignRight>右对齐</AlignRight>
@@ -1444,7 +1445,8 @@ Command line: {1} {2}
         <GenerateTextFromVideo>从视频生成文本...</GenerateTextFromVideo>
         <GenerateBlankVideo>生成空白视频...</GenerateBlankVideo>
         <GenerateVideoWithBurnedInSub>生成带有内嵌字幕的视频...</GenerateVideoWithBurnedInSub>
-        <GenerateVideoWithEmbeddedSubs>生成带有嵌入式字幕的视频...</GenerateVideoWithEmbeddedSubs>
+        <GenerateVideoWithEmbeddedSubs>生成带有内嵌字幕的视频...</GenerateVideoWithEmbeddedSubs>
+        <GenerateTransparentVideoWithSubs>生成带有字幕的透明视频...</GenerateTransparentVideoWithSubs>
         <VideoAudioToTextX>语言识别 ({0})...</VideoAudioToTextX>
         <ImportChaptersFromVideo>从视频中导入章节</ImportChaptersFromVideo>
         <GenerateImportShotChanges>生成/导入场景切换...</GenerateImportShotChanges>
@@ -3006,11 +3008,11 @@ Command line: {1} {2}
     <NumberOfAlignmentTags>排列位置标签数: {0}</NumberOfAlignmentTags>
     <LineLengthMinimum>字幕长度（最短）: {0}</LineLengthMinimum>
     <LineLengthMaximum>字幕长度（最长）: {0}</LineLengthMaximum>
-    <LineLengthAverage>字幕长度（平均）: {0}</LineLengthAverage>
+    <LineLengthAverage>字幕长度（平均）: {0:#.###}</LineLengthAverage>
     <LinesPerSubtitleAverage>平均行数: {0:0.0}</LinesPerSubtitleAverage>
     <SingleLineLengthMinimum>单行长度（最短）: {0}</SingleLineLengthMinimum>
     <SingleLineLengthMaximum>单行长度（最长）: {0}</SingleLineLengthMaximum>
-    <SingleLineLengthAverage>单行长度（平均）: {0}</SingleLineLengthAverage>
+    <SingleLineLengthAverage>单行长度（平均）: {0:#.###}</SingleLineLengthAverage>
     <SingleLineLengthExceedingMaximum>单行长度 - 超过最大值（{0} 个字符）: {1} ({2:0.00}%)</SingleLineLengthExceedingMaximum>
     <SingleLineWidthMinimum>单行宽度（最短）: {0} 像素</SingleLineWidthMinimum>
     <SingleLineWidthMaximum>单行宽度（最长）: {0} 像素</SingleLineWidthMaximum>
@@ -3125,6 +3127,9 @@ Command line: {1} {2}
     <Angle>角度</Angle>
     <BoxPerLine>每行一个框（使用轮廓色）</BoxPerLine>
     <BoxMultiLine>共用一个框（使用阴影色）</BoxMultiLine>
+    <BoxPerLineShort>每行一个框</BoxPerLineShort>
+    <BoxMultiLineShort>共用一个框</BoxMultiLineShort>
+    <BoxType>框类型</BoxType>
     <DuplicateStyleNames>为样式创建副本: {0}</DuplicateStyleNames>
   </SubStationAlphaStyles>
   <SubStationAlphaStylesCategoriesManager>
@@ -3163,6 +3168,7 @@ Command line: {1} {2}
     <MergingAudioTrackXOfY>合并音轨：{0} / {1}...</MergingAudioTrackXOfY>
     <GeneratingSpeechFromTextXOfY>从文本生成语音：{0} / {1}...</GeneratingSpeechFromTextXOfY>
     <ReviewAudioClips>审阅音频剪辑</ReviewAudioClips>
+    <CustomAudioEncoding>自定义音频编码</CustomAudioEncoding>
     <ReviewInfo>查看和编辑/删除音频剪辑</ReviewInfo>
     <Play>播放</Play>
     <AutoContinue>自动继续</AutoContinue>
@@ -3436,6 +3442,7 @@ Command line: {1} {2}
   <WebVttProperties>
     <UseXTimeStamp>使用 X-TIMESTAMP-MAP 标头值</UseXTimeStamp>
     <MergeLines>加载时合并具有相同文本的行</MergeLines>
+    <MergeStyleTags>合并样式标签</MergeStyleTags>
   </WebVttProperties>
   <WebVttStyleManager>
     <Title>WebVTT 样式</Title>

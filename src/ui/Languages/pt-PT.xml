@@ -2,7 +2,7 @@
 <Language Name="Português (Portugal)">
   <General>
     <Title>Subtitle Edit</Title>
-    <Version>4.0.6</Version>
+    <Version>4.0.7</Version>
     <TranslatedBy>Traduzido para Português de Portugal, por Hugo Carvalho(hugok79)
 E-mail: mailto:hugokarvalho@hotmail.com</TranslatedBy>
     <CultureName>pt-PT</CultureName>
@@ -1017,6 +1017,7 @@ Tiramos partido do ritmo intrínseco da imagem.</CreateSimpleChainingToolTip>
     <Audio>Áudio</Audio>
     <Stereo>Estéreo</Stereo>
     <Preset>Predefinição</Preset>
+    <PixelFormat>Formato de pixéis</PixelFormat>
     <Crf>CRF</Crf>
     <TuneFor>Sintonizar para</TuneFor>
     <AlignRight>Alinhar à direita</AlignRight>
@@ -1450,6 +1451,7 @@ Tiramos partido do ritmo intrínseco da imagem.</CreateSimpleChainingToolTip>
         <GenerateBlankVideo>Gerar vídeo em branco...</GenerateBlankVideo>
         <GenerateVideoWithBurnedInSub>Gerar vídeo com a legenda gravada...</GenerateVideoWithBurnedInSub>
         <GenerateVideoWithEmbeddedSubs>Gerar vídeo com legendas embutidas adicionadas/removidas...</GenerateVideoWithEmbeddedSubs>
+        <GenerateTransparentVideoWithSubs>Gerar vídeo transparente com legendas...</GenerateTransparentVideoWithSubs>
         <VideoAudioToTextX>Áudio para texto ({0})...</VideoAudioToTextX>
         <ImportChaptersFromVideo>Importar capítulos do vídeo</ImportChaptersFromVideo>
         <GenerateImportShotChanges>Gerar/importar mudanças de cena...</GenerateImportShotChanges>
@@ -2132,10 +2134,12 @@ Transferir e continuar?</VideoFromUrlRequirements>
     <RegEx>Expressão regular</RegEx>
     <OddLines>Linhas ímpares</OddLines>
     <EvenLines>Linhas pares</EvenLines>
-    <DurationLessThan>Duração menor que</DurationLessThan>
-    <DurationGreaterThan>Duração maior que</DurationGreaterThan>
-    <CpsLessThan>CPS menor que</CpsLessThan>
-    <CpsGreaterThan>CPS maior que</CpsGreaterThan>
+    <DurationLessThan>Duração inferior a</DurationLessThan>
+    <DurationGreaterThan>Duração superior a</DurationGreaterThan>
+    <CpsLessThan>CPS inferior a</CpsLessThan>
+    <CpsGreaterThan>CPS superior a</CpsGreaterThan>
+    <LengthLessThan>Comprimento inferior a</LengthLessThan>
+    <LengthGreaterThan>Comprimento superior a</LengthGreaterThan>
     <ExactlyOneLine>Exactamente uma linha</ExactlyOneLine>
     <ExactlyTwoLines>Exactamente duas linhas</ExactlyTwoLines>
     <MoreThanTwoLines>Mais de duas linhas</MoreThanTwoLines>
@@ -2335,7 +2339,7 @@ editar o mesmo ficheiro de legenda (colaboração)</Information>
     <BeautifyTimeCodes>Optimizar tempos</BeautifyTimeCodes>
     <SettingsName>Definições</SettingsName>
     <ToggleBookmarks>Alternar marcadores</ToggleBookmarks>
-    <FocusTextBox>Focar caixa de texto</FocusTextBox>
+    <FocusTextBox>Focar quadro de texto</FocusTextBox>
     <ToggleBookmarksWithComment>Alternar marcadores - adicionar comentário</ToggleBookmarksWithComment>
     <ClearBookmarks>Eliminar marcadores</ClearBookmarks>
     <ExportBookmarks>Exportar marcadores...</ExportBookmarks>
@@ -3017,15 +3021,15 @@ Continuar?</RestoreDefaultSettingsMsg>
     <NumberOfAlignmentTags>Número de etiquetas alinhamento: {0}</NumberOfAlignmentTags>
     <LineLengthMinimum>Comprimento da legenda - mínimo: {0}</LineLengthMinimum>
     <LineLengthMaximum>Comprimento da legenda - máximo: {0}</LineLengthMaximum>
-    <LineLengthAverage>Comprimento da legenda - médio: {0}</LineLengthAverage>
+    <LineLengthAverage>Comprimento da legenda - médio: {0:#.###}</LineLengthAverage>
     <LinesPerSubtitleAverage>Legenda, número de linhas - médio: {0:0.0}</LinesPerSubtitleAverage>
     <SingleLineLengthMinimum>Comprimento de uma linha - mínimo: {0}</SingleLineLengthMinimum>
     <SingleLineLengthMaximum>Comprimento de uma linha - máximo: {0}</SingleLineLengthMaximum>
-    <SingleLineLengthAverage>Comprimento de uma linha - médio: {0}</SingleLineLengthAverage>
+    <SingleLineLengthAverage>Comprimento de uma linha - médio: {0:#.###}</SingleLineLengthAverage>
     <SingleLineLengthExceedingMaximum>Comprimento de uma linha - excedendo o máximo ({0} cars): {1} ({2:0.00}%)</SingleLineLengthExceedingMaximum>
     <SingleLineWidthMinimum>Largura de uma linha - mínimo: {0} pixéis</SingleLineWidthMinimum>
     <SingleLineWidthMaximum>Largura de uma linha - máximo: {0} pixéis</SingleLineWidthMaximum>
-    <SingleLineWidthAverage>Largura de uma linha - média: {0} pixéis</SingleLineWidthAverage>
+    <SingleLineWidthAverage>Largura de uma linha - média: {0:#.###} pixéis</SingleLineWidthAverage>
     <SingleLineWidthExceedingMaximum>Largura de uma linha - excedendo o máximo ({0} pixéis): {1} ({2:0.00}%)</SingleLineWidthExceedingMaximum>
     <DurationMinimum>Duração - mínima: {0:0.000} segundos</DurationMinimum>
     <DurationMaximum>Duração - máxima: {0:0.000} segundos</DurationMaximum>
@@ -3136,6 +3140,9 @@ Continuar?</RestoreDefaultSettingsMsg>
     <Angle>Ângulo</Angle>
     <BoxPerLine>Quadro por linha (usar cor de contorno)</BoxPerLine>
     <BoxMultiLine>Um quadro (usar cor de sombra)</BoxMultiLine>
+    <BoxPerLineShort>Quadro por linha</BoxPerLineShort>
+    <BoxMultiLineShort>Um quadro</BoxMultiLineShort>
+    <BoxType>Tipo de quadro</BoxType>
     <DuplicateStyleNames>Nomes de estilo duplicados: {0}</DuplicateStyleNames>
   </SubStationAlphaStyles>
   <SubStationAlphaStylesCategoriesManager>
@@ -3174,6 +3181,7 @@ Continuar?</RestoreDefaultSettingsMsg>
     <MergingAudioTrackXOfY>A combinar a faixa de áudio: {0} / {1}...</MergingAudioTrackXOfY>
     <GeneratingSpeechFromTextXOfY>A gerar voz a partir de texto: {0} / {1}...</GeneratingSpeechFromTextXOfY>
     <ReviewAudioClips>Rever clipes de áudio</ReviewAudioClips>
+    <CustomAudioEncoding>Codificação áudio personalizada</CustomAudioEncoding>
     <ReviewInfo>Rever e editar/remover clipes de áudio</ReviewInfo>
     <Play>Reproduzir</Play>
     <AutoContinue>Continuar automaticamente</AutoContinue>
@@ -3449,6 +3457,7 @@ Manter as alterações?</KeepChangesMessage>
   <WebVttProperties>
     <UseXTimeStamp>Usar o valor de cabeçalho X-TIMESTAMP-MAP</UseXTimeStamp>
     <MergeLines>Combinar linhas com o mesmo texto no carregamento</MergeLines>
+    <MergeStyleTags>Combinar etiquetas de estilo</MergeStyleTags>
   </WebVttProperties>
   <WebVttStyleManager>
     <Title>Estilos WebVTT</Title>

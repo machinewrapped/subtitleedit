@@ -8,6 +8,7 @@ using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using Nikse.SubtitleEdit.Core.Settings;
 
 namespace Nikse.SubtitleEdit.Controls
 {
@@ -242,6 +243,7 @@ namespace Nikse.SubtitleEdit.Controls
 
             _pictureBoxVolumeBarBackground.BringToFront();
             _pictureBoxVolumeBar.BringToFront();
+            _labelVolume.BringToFront();
 
             _labelTimeCode.Click += LabelTimeCodeClick;
             _loading = false;
@@ -292,6 +294,7 @@ namespace Nikse.SubtitleEdit.Controls
 
             _labelTimeCode.Visible = true;
             _labelTimeCode.BringToFront();
+            _labelVolume.BringToFront();
         }
 
         public void EnableMouseWheelStep()
